@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block myBlockTitle %}Kerbals{% endblock %}</title>
+
+    <!-- loads the path to static files -->
+    {% load staticfiles %}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'kerbals/mystyle.css' %}"/>
+
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+            <!-- Header -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myTopNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                </button>
+                <a class="navbar-brand" href="{% url 'kerbals:index' %}">KSP Nico</a>
+            </div>
+
+            <!-- Items -->
+            <div class="collapse navbar-collapse" id="myTopNavBar">
+
+                <ul class="nav navbar-nav">
+
+
+                </ul>
+
+                 <ul class="nav navbar-nav navbar-lreft">
+                    <li class="">
+                        <a href="{% url 'kerbals:list' %}">
+                            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;Refresh List
+                        </a>
+                    </li>
+                 </ul>
+                <ul class="nav navbar-nav navbar-lreft">
+                    <li class="">
+                        <a href="{% url 'kerbals:list_basic' %}">
+                            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp; List Basic
+                        </a>
+                    </li>
+                 </ul>
+            </div>
+
+    </nav>
+
+    <!-- to add blocks of code -->
+    {% block myBlock %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends 'kerbals/base.html' %}
+
+{% block myBlock %}
+
+<div class="hiking-container container-fluid">
+
+        <!-- Kerbals -->
+        <div class="row">
+            {% if my_kerbals_all %}
+                {% for kerbal in my_kerbals_all %}
+
+                    <div class="col-sm-5 col-lg-5">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h3>{{ kerbal.name }} ({{ kerbal.trait }}, {{ kerbal.state }})</h3>
+                                <h4>Flights : {{ kerbal.flights }}</h4>
+                                <h4>Land    : {{ kerbal.land }}</h4>
+                                <h4>Orbit   : {{ kerbal.orbit }}</h4>
+
+                                                                <!-- Delete Hike -->
+                                <form action="{% url 'kerbals:kerbal-delete' kerbal.pk %}" method="post" style="display: inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="kerbal_id" value="{{ kerbal.id }}" />
+                                    <button type="submit" class="btn btn-default btn-sm">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+                {% endfor %}
+            {% endif %}
+        </div>
+</div>
+{% endblock %}

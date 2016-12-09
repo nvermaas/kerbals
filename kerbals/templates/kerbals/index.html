@@ -1,0 +1,28 @@
+{% extends 'kerbals/base.html' %}
+
+{% block myBlock %}
+
+<div class="kerbals-container container-fluid">
+
+        <!-- Kerbals -->
+        <div class="row">
+            {% if my_kerbals_all %}
+                {% for kerbal in my_kerbals_all %}
+
+                    <div class="col-sm-4 col-lg-4">
+                        <div class="thumbnail">
+                            <div class=" {{ kerbal.state }}" >
+
+                                <h3 class="bg-success">{{ kerbal.name }} ({{ kerbal.trait }}, {{ kerbal.state }})</h3>
+                                <h4>Flights : {{ kerbal.flights }}</h4>
+                                <h4>Land    : {{ kerbal.land }}</h4>
+                                <h4>Orbit   : {{ kerbal.orbit }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+                {% endfor %}
+            {% endif %}
+        </div>
+</div>
+{% endblock %}
